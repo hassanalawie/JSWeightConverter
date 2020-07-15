@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin-left: 30rem;
+        margin-top: 70px;
+        background: #333;
+        color: #fff;
+      }
+    </style>
+    <title>Weight Converter</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offer-md-3">
+          <h1 id="title" class="display-4 text-center">
+            Pick what you'd like to convert from
+          </h1>
+          <form>
+            <div class="form-group">
+              <input
+                id="lbsInput"
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Enter Value..."
+              />
+            </div>
+          </form>
+          <div id="output">
+            <div id="grambox" class="card bg-success mb-2 p-3">
+              <div class="card-block">
+                <h4>Grams:</h4>
+                <div id="gramsOutput"></div>
+              </div>
+            </div>
+            <div id="kgbox" class="card bg-primary mb-2 p-3">
+              <div class="card-block">
+                <h4>Kilograms:</h4>
+                <div id="kgOutput"></div>
+              </div>
+            </div>
+            <div id="lbsbox" class="card bg-secondary mb-2 p-3">
+              <div class="card-block">
+                <h4>Pounds:</h4>
+                <div id="lbsOutput"></div>
+              </div>
+            </div>
+            <div id="ozbox" class="card bg-danger mb-2 p-3">
+              <div class="card-block">
+                <h4>Ounces:</h4>
+                <div id="ozOutput"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("grambox")
+        .addEventListener("click", function (e) {
+          document.getElementById("title").innerHTML = "Grams";
+        });
+      document.getElementById("kgbox").addEventListener("click", function (e) {
+        document.getElementById("title").innerHTML = "Kilograms";
+      });
+      document.getElementById("lbsbox").addEventListener("click", function (e) {
+        document.getElementById("title").innerHTML = "Pounds";
+      });
+      document.getElementById("ozbox").addEventListener("click", function (e) {
+        document.getElementById("title").innerHTML = "Ounces";
+      });
+
+      document
+        .getElementById("lbsInput")
+        .addEventListener("input", function (e) {
+          let lbs = e.target.value;
+          switch (document.getElementById("title").innerHTML) {
+            case "Pounds":
+              document.getElementById("gramsOutput").innerHTML =
+                lbs / 0.0022046;
+              document.getElementById("kgOutput").innerHTML = lbs / 2.2046;
+              document.getElementById("ozOutput").innerHTML = lbs * 16;
+              document.getElementById("lbsOutput").innerHTML = lbs;
+              break;
+            case "Kilograms":
+              document.getElementById("gramsOutput").innerHTML = lbs * 1000;
+              document.getElementById("kgOutput").innerHTML = lbs;
+              document.getElementById("ozOutput").innerHTML = lbs * 35.274;
+              document.getElementById("lbsOutput").innerHTML = lbs * 2.2;
+              break;
+            case "Grams":
+              document.getElementById("gramsOutput").innerHTML = lbs;
+              document.getElementById("kgOutput").innerHTML = lbs / 1000;
+              document.getElementById("ozOutput").innerHTML = lbs * 0.035274;
+              document.getElementById("lbsOutput").innerHTML = lbs * 0.00220462;
+              break;
+            case "Ounces":
+              document.getElementById("gramsOutput").innerHTML = lbs * 28.3495;
+              document.getElementById("kgOutput").innerHTML = lbs * 0.0283495;
+              document.getElementById("ozOutput").innerHTML = lbs;
+              document.getElementById("lbsOutput").innerHTML = lbs / 16;
+              break;
+            default:
+              console.log("color is not red or blue");
+              break;
+          }
+        });
+    </script>
+  </body>
+</html>
